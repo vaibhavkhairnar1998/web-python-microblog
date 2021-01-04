@@ -1,10 +1,12 @@
+import os
 import datetime
 from flask import Flask, render_template, request
 from pymongo import MongoClient
+from dotenv import load_dotenv
 
+load_dotenv()
 app = Flask(__name__)
-client = MongoClient(
-    "mongodb+srv://vk:vk123@microblog-application.99dld.mongodb.net/test")
+client = MongoClient(os.environ.get("MONGODB_URI"))
 app.db = client.microblog
 
 
